@@ -1,5 +1,7 @@
 package main
 
 func main() {
-	println("hello world!")
+	// This code intentionally uncompilable
+	// It's for testing the dep manager in the dev context
+	println("hello world!"
 }
