@@ -16,9 +16,9 @@ func main() {
 		panic(err)
 	}
 
-	// port = 8081
-	err = socket.Bind("tpc://*:8081")
+	err = socket.Bind("tcp://*:6000")
 	if err != nil {
+		println("bind error")
 		panic(err)
 	}
 
@@ -26,6 +26,7 @@ func main() {
 
 	err = socket.Close()
 	if err != nil {
+		println("close error")
 		panic(err)
 	}
 
