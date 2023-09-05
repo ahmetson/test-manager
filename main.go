@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/ahmetson/common-lib/data_type/key_value"
 	"github.com/ahmetson/common-lib/message"
 	"github.com/pebbe/zmq4"
@@ -30,13 +31,15 @@ func main() {
 	currentTime := time.Now()
 	endTime := currentTime.Add(time.Second * N)
 
+	fmt.Printf("current time: %v, end time: %v\n", currentTime, endTime)
+
 	for {
 		polled, err := poller.Poll(time.Millisecond)
 		if err != nil {
 			panic(err)
 		}
 
-		currentTime = currentTime.Add(time.Millisecond)
+		currentTime = time.Now()
 		if currentTime.UnixMilli() >= endTime.UnixMilli() {
 			break
 		}
@@ -72,5 +75,5 @@ func main() {
 		panic(err)
 	}
 
-	println("Server exited successfully")
+	fmt.Printf("Server exited successfully: %v, now: %v\n", currentTime, time.Now())
 }
